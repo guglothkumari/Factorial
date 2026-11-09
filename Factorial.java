@@ -14,6 +14,6 @@ class Factorial {
         return result;
     }
     public static void main(String[] args) {
-        System.out.println("Factorial of 5 = " + compute(5));
+        System.out.println("Factorial of 5 = " + compute(6));
     }
 }

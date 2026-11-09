@@ -23,14 +23,12 @@ pipeline {
                 bat "java Factorial"
             }
         }
-
         stage('Archive') {
             steps {
                 echo 'Archiving...'
-                bat 'call "C:\\Program Files\\Java\\jdk-24\\bin\\jar.exe" cfm factorial.jar Manifest.txt Factorial.class'
+                bat 'call "C:\\Program Files\\Java\\jdk-24\\bin\\jar.exe" cfe factorial.jar Factorial Factorial.class'
             }
         }
-
         stage('Artifact Upload') {
             steps {
                 echo 'Uploading artifact...'

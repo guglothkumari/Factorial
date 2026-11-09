@@ -23,7 +23,7 @@ pipeline {
         stage('Archive') {
             steps {
                 echo 'Archiving...'
-                bat '"C:/Program Files/Java/jdk-24/bin/jar.exe" cfm factorial.jar Manifest.txt Factorial.class'
+                bat 'C:/Program Files/Java/jdk-24/bin/jar.exe" cfm factorial.jar Manifest.txt Factorial.class'
             }
         }
         stage('Artifact Upload') {

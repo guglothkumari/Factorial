@@ -1,43 +1,52 @@
-pipeline{
+
+pipeline {
     agent any
-    stages{
-        stage('Build'){
-            steps{
+
+    stages {
+
+        stage('Build') {
+            steps {
                 echo 'Building...'
                 bat "javac Factorial.java TestFactorial.java"
             }
         }
-        stage('Test'){
-            steps{
+
+        stage('Test') {
+            steps {
                 echo 'Testing...'
                 bat "java TestFactorial"
             }
         }
-        stage('Running'){
-            steps{
+
+        stage('Running') {
+            steps {
                 echo 'Running...'
                 bat "java Factorial"
             }
         }
-        stage('Archive'){
-            steps{
+
+        stage('Archive') {
+            steps {
                 echo 'Archiving...'
                 bat "jar cfm factorial.jar Manifest.txt Factorial.class"
             }
         }
-        stage('Artifact Upload'){
-            steps{
+
+        stage('Artifact Upload') {
+            steps {
                 echo 'Uploading artifact...'
-                bat "archiveArtifact archive:factorial.jar"
+                archiveArtifacts artifacts: 'factorial.jar'
             }
         }
     }
-    post{
-        success{
+
+    post {
+        success {
             echo 'Pipeline completed successfully.'
         }
-        failure{
+
+        failure {
             echo 'Pipeline failed.'
-        }   
+        }
     }
 }

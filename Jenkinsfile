@@ -26,7 +26,7 @@ pipeline {
         stage('Archive') {
             steps {
                 echo 'Archiving...'
-                bat 'call "C:\\Program Files\\Java\\jdk-24\\bin\\jar.exe" cfe factorial.jar Factorial Factorial.class'
+                bat '"C:\\Program Files\\Java\\jdk-24\\bin\\jar.exe" cfm factorial.jar Factorial Factorial.class'
             }
         }
         stage('Artifact Upload') {
